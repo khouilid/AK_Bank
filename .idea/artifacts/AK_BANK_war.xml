@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="AK_BANK:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>AK_BANK</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="AK_BANK-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="AK_BANK:war exploded" />
+    </root>
+  </artifact>
+</component>
