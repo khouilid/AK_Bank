@@ -1,8 +1,10 @@
 package com.example.JavaBeans;
 
-public class User {
+import java.io.Serializable;
 
-    private int id;
+public class User   implements Serializable {
+
+    private long user_id;
     private String email;
     private String password;
 
@@ -11,8 +13,8 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, String email, String password) {
-        this.id = id;
+    public User(long id, String email, String password) {
+        this.user_id = id;
         this.email = email;
         this.password = password;
     }
@@ -20,12 +22,12 @@ public class User {
     public User() {
     }
 
-    public int getId() {
-        return id;
+    public long getUser_idId() {
+        return user_id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.user_id = id;
     }
 
     public String getEmail() {

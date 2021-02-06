@@ -11,7 +11,7 @@ public class Connexion {
     private static String url = "jdbc:postgresql://localhost:5432/mybank";
     private static Connection conx;
 
-    public  Connection connect() throws SQLException, SQLException {
+    public static Connection connect() throws SQLException, SQLException {
         try {
             conx = DriverManager.getConnection(url, user, password);
         } catch (SQLException throwables) {
