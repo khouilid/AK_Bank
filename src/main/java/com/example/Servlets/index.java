@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 @WebServlet(name = "index", value = "/")
 public class index extends HttpServlet {
@@ -41,19 +43,39 @@ public class index extends HttpServlet {
                 PersonneDAO personnes = new PersonneDAOImlp();
 
 
-                try {
-                    users = personnes.getAll();
-                    request.setAttribute("Users", users.getUsers());
-
-
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
+//                try {
+//                    users = personnes.getAll();
+//                    request.setAttribute("Users", users.getUsers());
+                    request.setAttribute("RichesPersonnes", getRichesPersonne());
+//
+//
+//                } catch (SQLException throwables) {
+//                    throwables.printStackTrace();
+//                }
             }
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
 
+
+
+    private static ArrayList<Personne> getRichesPersonne() {
+        ArrayList<Personne> personnes = null;
+        PersonneDAO personne = new PersonneDAOImlp();
+        try {
+            Users<Personne> users = personne.getAll();
+            personnes = users.getUsers();
+
+            Collections.sort(personnes, Collections.reverseOrder());
+            personnes.forEach(p -> System.out.println(p.getSold()));
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return personnes;
+
+    }
 
 }

@@ -1,19 +1,31 @@
 package com.example.JavaBeans;
-
 import java.io.Serializable;
+import java.sql.Date;
 
-public class User   implements Serializable {
+public class User implements Serializable {
 
-    private long user_id;
+    private Integer user_id;
     private String email;
     private String password;
+
+
+
+
+    public long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
+    }
+
 
     public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    public User(long id, String email, String password) {
+    public User(Integer id, String email, String password) {
         this.user_id = id;
         this.email = email;
         this.password = password;
@@ -22,13 +34,6 @@ public class User   implements Serializable {
     public User() {
     }
 
-    public long getUser_idId() {
-        return user_id;
-    }
-
-    public void setId(int id) {
-        this.user_id = id;
-    }
 
     public String getEmail() {
         return email;

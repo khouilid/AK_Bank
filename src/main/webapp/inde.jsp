@@ -96,7 +96,7 @@
                 <span class="nav-link">Navigation</span>
             </li>
             <li class="nav-item menu-items">
-                <a class="nav-link" href="inde.jsp">
+                <a class="nav-link" href="/">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -105,7 +105,7 @@
             </li>
 
             <li class="nav-item menu-items">
-                <a class="nav-link" href="./pages/basic-table.jsp">
+                <a class="nav-link" href="Customers">
               <span class="menu-icon">
                 <i class="mdi mdi-table-large"></i>
               </span>
@@ -114,16 +114,16 @@
             </li>
 
             <li class="nav-item menu-items">
-                <a class="nav-link" href="${pageContext.request.contextPath}/Customers">
+                <a class="nav-link" href="/CreateAccount">
               <span class="menu-icon">
                 <i class="mdi mdi-playlist-play"></i>
               </span>
-                    <span class="menu-title">Form Elements</span>
+                    <span class="menu-title">Create new account</span>
                 </a>
             </li>
 
             <li class="nav-item menu-items">
-                <a class="nav-link" href="pages/chartjs.jsp">
+                <a class="nav-link" href="/chartjs">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
@@ -141,13 +141,11 @@
                 </a>
                 <div class="collapse" id="auth">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="./pages/blank-page.jsp"> Blank Page </a></li>
-                        <li class="nav-item"><a class="nav-link" href="./pages/error-404.jsp"> 404 </a></li>
-                        <li class="nav-item"><a class="nav-link" href="./pages/error-500.jsp"> 500 </a></li>
-                        <li class="nav-item"><a class="nav-link" href="./pages/login.jsp"> Login </a></li>
-                        <li class="nav-item"><a class="nav-link" href="./pages/register.jsp"> Register </a></li>
+                        <li class="nav-item"><a class="nav-link" href="/register"> Register </a></li>
+                        <li class="nav-item"><a class="nav-link" href="/registe"> Register </a></li>
                     </ul>
                 </div>
+
             </li>
         </ul>
     </nav>
@@ -249,7 +247,7 @@
                     <div class="col-12 grid-margin">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Top Customers</h4>
+                                <h4 class="card-title">Top enterprise accounts</h4>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
@@ -323,7 +321,62 @@
                         </div>
                     </div>
                 </div>
+                <div class="row ">
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Top personal accounts</h4>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th> First Name</th>
+                                            <th> Last Name</th>
+                                            <th> Sold</th>
+                                            <th> Created</th>
+                                            <th> Account N°:</th>
+                                            <th> CVC</th>
 
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <%
+                                            ArrayList<Personne> personnes = (ArrayList<Personne>) request.getAttribute("RichesPersonnes");
+                                            int limit;
+                                            if (personnes.size() < 5){
+                                                limit = personnes.size();
+                                            }else {
+                                                limit = 5;
+                                            }
+
+                                            for (int i = 0; i < limit; i++) {
+
+
+                                        %>
+                                        <tr>
+
+                                            <td>
+                                                <img src="./assets/images/faces/face5.jpg" alt="image"/>
+                                                <span class="pl-2"><%=personnes.get(i).getFirt_name()%></span>
+                                            </td>
+                                            <td><%=personnes.get(i).getLast_name() %></td>
+                                            <td>$<%=personnes.get(i).getSold() %></td>
+                                            <td><%=personnes.get(i).getCreated()%></td>
+                                            <td> App design</td>
+                                            <td> App design</td>
+
+                                        </tr>
+                                        <%
+                                            }
+                                        %>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">

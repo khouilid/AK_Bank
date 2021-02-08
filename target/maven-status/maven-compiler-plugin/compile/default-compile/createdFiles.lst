@@ -7,6 +7,7 @@ com/example/DAO/PersonneDAO.class
 com/example/Servlets/Login.class
 com/example/Utiles/Connexion.class
 com/example/Servlets/Customers.class
+com/example/Servlets/CreateAccount.class
 com/example/DAO/CompanyDAO.class
 com/example/repository/Login.class
 com/example/DAO/PersonneDAOImlp.class

@@ -9,14 +9,14 @@ public interface PersonneDAO {
 
 
 
-    void create(Personne user);
+    boolean create(Personne user) throws SQLException;
 
     Users<Personne> getAll() throws SQLException;
 
-    Users<Personne> getById();
+    Personne getById(int user_id) throws SQLException;
 
     void update(Personne user);
 
-    void delete(long user_id);
+    void delete(long user_id) throws SQLException;
 
 }

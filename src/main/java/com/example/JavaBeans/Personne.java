@@ -1,55 +1,54 @@
 package com.example.JavaBeans;
 
-public class Personne extends User{
-    private long id, sold;
+import java.sql.Date;
+
+public class Personne extends User implements Comparable<Personne>{
+    private Integer id, sold;
     private String firt_name, last_name;
+    private String created;
 
-
-    public Personne(long id, String email, String password, long id1, long sold, String firt_name, String last_name) {
-        super(id, email, password);
-        this.id = id1;
-        this.sold = sold;
-        this.firt_name = firt_name;
-        this.last_name = last_name;
-    }
-
-
-    public Personne(String email, String password, long id1, long sold, String firt_name, String last_name) {
-        super(email, password);
-        this.id = id1;
-        this.sold = sold;
+    public Personne(String email, String firt_name, String last_name) {
+        this.setEmail(email);
         this.firt_name = firt_name;
         this.last_name = last_name;
     }
 
     public Personne() {
-    }
-    public Personne(String email, String password) {
-        super(email, password);
+
     }
 
-    public Personne(String first_name, String last_name, String email, long sold) {
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public Personne(String first_name, String last_name, String email, Integer sold) {
         this.firt_name = first_name;
         this.last_name = last_name;
         this.setEmail(email);
         this.sold = sold;
 
+
     }
 
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public long getSold() {
+    public Integer getSold() {
         return sold;
     }
 
-    public void setSold(long sold) {
+    public void setSold(Integer sold) {
         this.sold = sold;
     }
 
@@ -67,5 +66,12 @@ public class Personne extends User{
 
     public void setLast_name(String last_name) {
         this.last_name = last_name;
+    }
+
+
+    @Override
+    public int compareTo(Personne personne) {
+        Integer id1 = Math.toIntExact(this.getSold());
+        return id1.compareTo(personne.getSold());
     }
 }

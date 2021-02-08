@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 @WebServlet(name = "Customers", value = "/Customers")
 public class Customers extends HttpServlet {
@@ -23,20 +26,16 @@ public class Customers extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         PersonneDAO personnes = new PersonneDAOImlp();
-
         try {
-            Users<Personne>  users = personnes.getAll();
+            Users<Personne> users = personnes.getAll();
             request.setAttribute("Users", users);
-
+            RequestDispatcher dispatcher = request.getRequestDispatcher("pages/basic-table.jsp");
+            dispatcher.forward(request, response);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("pages/basic-table.jsp");
-        dispatcher.forward(request, response);
     }
 }
