@@ -1,7 +1,8 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.example.JavaBeans.Personne" %>
-<%@ page import="com.example.JavaBeans.Users" %>
+<%@ page import="com.example.Models.Personne" %>
+<%@ page import="com.example.Models.Users" %>
 <%@ page import="java.util.HashSet" %>
+<%@ page import="com.example.Models.Companyes" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,11 +28,11 @@
     <!-- partial:../partials/_sidebar.jsp -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-            <a class="sidebar-brand brand-logo" href="inde.jsp">
+            <a class="sidebar-brand brand-logo" href="/">
                 <h2 class=" text-white">AK Bank</h2>
 
             </a>
-            <a class="sidebar-brand brand-logo-mini" href="inde.jsp">
+            <a class="sidebar-brand brand-logo-mini" href="/">
                 <h2 class=" text-white">AK</h2>
             </a>
         </div>
@@ -109,16 +110,7 @@
             </li>
 
             <li class="nav-item menu-items">
-                <a class="nav-link" href="${pageContext.request.contextPath}/Customers">
-              <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
-              </span>
-                    <span class="menu-title">Form Elements</span>
-                </a>
-            </li>
-
-            <li class="nav-item menu-items">
-                <a class="nav-link" href="/chartjs">
+                <a class="nav-link" href="/charts">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
@@ -131,14 +123,18 @@
               <span class="menu-icon">
                 <i class="mdi mdi-security"></i>
               </span>
-                    <span class="menu-title">User Pages</span>
+                    <span class="menu-title">New account</span>
                     <i class="menu-arrow"></i>
                 </a>
                 <div class="collapse" id="auth">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="/register"> Register </a></li>
+                        <li class="nav-item"><a class="nav-link" href="/createNewAccountPersonal"> Personal account </a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="/CreateNewAccountEnterprise"> Enterprise </a>
+                        </li>
                     </ul>
                 </div>
+
             </li>
         </ul>
     </nav>
@@ -189,8 +185,8 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th>Profile</th>
-                                            <th>VatNo.</th>
+                                            <th>First name</th>
+                                            <th>Last name</th>
                                             <th>Created</th>
                                             <th>Status</th>
                                         </tr>
@@ -200,7 +196,7 @@
 
                                         <%
 
-                                            Users<Personne> users = (Users<Personne>) request.getAttribute("Users");
+                                            Users<Personne> users = (Users<Personne>) request.getAttribute("personnes");
                                             ArrayList<Personne> personnes = users.getUsers();
 
 
@@ -213,14 +209,18 @@
                                             </td>
                                             <td><%=personnes.get(i).getFirt_name()%>
                                             </td>
-                                            <td>15 May 2017</td>
+                                            <td><%=personnes.get(i).getCreated()%>
+                                            </td>
                                             <td>
-                                                <div>
-                                                    <button class="btn btn-danger">Delete</button>
-                                                    <button class="btn btn-secondary">Block</button>
-                                                    <button style="display: none;" class="btn badge-success">Inblock
-                                                    </button>
-                                                </div>
+                                                    <div>
+                                                <form class="d-flex justify-content-between" action="deleteAccount" method="get">
+                                                        <input hidden name="person_id" value="<%=personnes.get(i).getId()%>">
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                                        <button class="btn btn-secondary">Block</button>
+                                                        <button style="display: none;" class="btn badge-success">Inblock
+                                                        </button>
+                                                    </div>
                                             </td>
                                         </tr>
 
@@ -241,17 +241,32 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th>Profile</th>
-                                            <th>VatNo.</th>
+                                            <th>Name</th>
+                                            <th>Sold</th>
                                             <th>Created</th>
                                             <th>Status</th>
                                         </tr>
                                         </thead>
                                         <tbody>
+
+
+                                        <%
+
+                                            Users<Companyes> companyesUsers = (Users<Companyes>) request.getAttribute("companyes");
+                                            ArrayList<Companyes> companyes = companyesUsers.getUsers();
+
+
+                                            for (int i = 0; i < companyes.size(); i++) {
+
+
+                                        %>
                                         <tr>
-                                            <td>Jacob</td>
-                                            <td>53275531</td>
-                                            <td>12 May 2017</td>
+                                            <td><%=companyes.get(i).getName()%>
+                                            </td>
+                                            <td>$<%=companyes.get(i).getSold()%>
+                                            </td>
+                                            <td><%=companyes.get(i).getCreated()%>
+                                            </td>
                                             <td>
                                                 <div>
                                                     <button class="btn btn-danger">Delete</button>
@@ -261,58 +276,10 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>Messsy</td>
-                                            <td>53275532</td>
-                                            <td>15 May 2017</td>
-                                            <td>
-                                                <div>
-                                                    <button class="btn btn-danger">Delete</button>
-                                                    <button class="btn btn-secondary">Block</button>
-                                                    <button style="display: none;" class="btn badge-success">Inblock
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>John</td>
-                                            <td>53275533</td>
-                                            <td>14 May 2017</td>
-                                            <td>
-                                                <div>
-                                                    <button class="btn btn-danger">Delete</button>
-                                                    <button class="btn btn-secondary">Block</button>
-                                                    <button style="display: none;" class="btn badge-success">Inblock
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Peter</td>
-                                            <td>53275534</td>
-                                            <td>16 May 2017</td>
-                                            <td>
-                                                <div>
-                                                    <button class="btn btn-danger">Delete</button>
-                                                    <button class="btn btn-secondary">Block</button>
-                                                    <button style="display: none;" class="btn badge-success">Inblock
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Dave</td>
-                                            <td>53275535</td>
-                                            <td>20 May 2017</td>
-                                            <td>
-                                                <div>
-                                                    <button class="btn btn-danger">Delete</button>
-                                                    <button class="btn btn-secondary">Block</button>
-                                                    <button style="display: none;" class="btn badge-success">Inblock
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
+
+                                        <%
+                                            }
+                                        %>
                                         </tbody>
                                     </table>
                                 </div>

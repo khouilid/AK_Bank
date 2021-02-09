@@ -8,15 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "CreateAccount", value = "/createNewAccount")
-public class CreateAccount extends HttpServlet {
+@WebServlet(name = "charts", value = "/charts")
+public class charts extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Views/register.jsp");
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Views/chartjs.jsp");
         dispatcher.forward(request, response);
-
-
     }
 
     @Override

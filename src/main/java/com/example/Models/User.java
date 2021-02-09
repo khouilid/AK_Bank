@@ -1,14 +1,21 @@
-package com.example.JavaBeans;
+package com.example.Models;
 import java.io.Serializable;
-import java.sql.Date;
 
 public class User implements Serializable {
 
     private Integer user_id;
     private String email;
     private String password;
+    private Long account_number;
 
 
+    public Long getAccount_number() {
+        return account_number;
+    }
+
+    public void setAccount_number(Long account_number) {
+        this.account_number = account_number;
+    }
 
 
     public long getUser_id() {

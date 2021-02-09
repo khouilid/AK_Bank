@@ -24,11 +24,11 @@
       <!-- partial:../partials/_sidebar.jsp -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href="inde.jsp">
+          <a class="sidebar-brand brand-logo" href="/">
             <h2 class=" text-white">AK Bank</h2>
 
           </a>
-          <a class="sidebar-brand brand-logo-mini" href="inde.jsp">
+          <a class="sidebar-brand brand-logo-mini" href="/">
             <h2 class=" text-white">AK</h2>
           </a>
         </div>
@@ -106,15 +106,6 @@
           </li>
 
           <li class="nav-item menu-items">
-            <a class="nav-link" href="${pageContext.request.contextPath}/Customers">
-              <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
-              </span>
-              <span class="menu-title">Form Elements</span>
-            </a>
-          </li>
-
-          <li class="nav-item menu-items">
             <a class="nav-link" href="/chartjs">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
@@ -128,17 +119,19 @@
               <span class="menu-icon">
                 <i class="mdi mdi-security"></i>
               </span>
-              <span class="menu-title">User Pages</span>
+              <span class="menu-title">New account</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="/register"> Register </a></li>
+                <li class="nav-item"><a class="nav-link" href="/createNewAccountPersonal"> Personal account </a></li>
+                <li class="nav-item"><a class="nav-link" href="/CreateNewAccountEnterprise"> Enterprise </a></li>
               </ul>
             </div>
+
           </li>
         </ul>
-      </nav>      <!-- partial -->
+      </nav>
       <div class="container-fluid page-body-wrapper">
         <!-- partial:../partials/_navbar.jsp -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
@@ -169,7 +162,7 @@
               <h3 class="page-title"> Chart-js </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Charts</a></li>
+                  <li class="breadcrumb-item"><a href="/charts">Charts</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Chart-js</li>
                 </ol>
               </nav>

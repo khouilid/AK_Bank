@@ -1,20 +1,20 @@
 import com.example.DAO.CompanyDAO;
 import com.example.DAO.CompanyDAOImpl;
-import com.example.DAO.PersonneDAO;
-import com.example.DAO.PersonneDAOImlp;
-import com.example.JavaBeans.Companyes;
-import com.example.JavaBeans.Personne;
-import com.example.JavaBeans.Users;
+import com.example.Models.Companyes;
+import com.example.Models.Users;
 import com.example.Tools.RandomInformations;
 
 import java.security.SecureRandom;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class test {
 
     public static void main(String[] args) throws SQLException {
+
+
+        System.out.println(RandomInformations.RandomAccountNumber()[0]);
+        System.out.println(RandomInformations.RandomAccountNumber()[1]);
         //inti ths id by 0
 //        String id = "";
 //        //sql query
@@ -62,13 +62,21 @@ public class test {
 
 //        System.out.println(RandomInformations.RandomPassword(10));
 
+//
+//        CompanyDAO companyDAO = new CompanyDAOImpl();
+////        Companyes companyes = new Companyes("Az Bank", "ab@abd.com");
+////        companyDAO.create(companyes);
+//
+//        Users<Companyes> companyes1 = companyDAO.getAll();
+//
+//
+//        ArrayList<Companyes> companyes2 = companyes1.getUsers();
+//
+//        companyes2.forEach(c -> System.out.println(c.getName()));
+////        System.out.println(companyDAO.getById(13).getName());
 
-        CompanyDAO companyDAO = new CompanyDAOImpl();
-        Companyes companyes = new Companyes("Az Bank", "ab@abd.com");
-        companyDAO.create(companyes);
-//        System.out.println(companyDAO.getById(13).getName());
-
-
+//        System.out.println(Long.parseLong(RandomInformations.RandomAccountNumber()));
+//        System.out.println(RandomInformations.RandomAccountNumber().length());
 //        companyDAO.getAll()
 
     }
@@ -92,6 +100,8 @@ public class test {
 //        return personnes;
 //
 //    }
+
+
 
 
 

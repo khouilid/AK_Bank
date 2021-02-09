@@ -1,6 +1,4 @@
-package com.example.JavaBeans;
-
-import java.sql.Date;
+package com.example.Models;
 
 public class Personne extends User implements Comparable<Personne>{
     private Integer id, sold;
@@ -26,11 +24,13 @@ public class Personne extends User implements Comparable<Personne>{
         this.created = created;
     }
 
-    public Personne(String first_name, String last_name, String email, Integer sold) {
+    public Personne(String first_name, String last_name, String email, Integer sold, Long accountNumber) {
         this.firt_name = first_name;
         this.last_name = last_name;
         this.setEmail(email);
         this.sold = sold;
+        this.setAccount_number(accountNumber);
+
 
 
     }

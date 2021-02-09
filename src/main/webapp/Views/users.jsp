@@ -1,6 +1,6 @@
-<%@ page import="com.example.JavaBeans.Personne" %>
+<%@ page import="com.example.Models.Personne" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.example.JavaBeans.Users" %>
+<%@ page import="com.example.Models.Users" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

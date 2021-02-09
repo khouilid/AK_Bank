@@ -1,10 +1,7 @@
-package com.example.JavaBeans;
+package com.example.Models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 
 public class Users<T>  implements Serializable {
 

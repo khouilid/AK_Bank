@@ -25,19 +25,19 @@
           <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
             <div class="card col-lg-4 mx-auto">
               <div class="card-body px-5 py-5">
-                <h3 class="card-title text-left mb-3">Register</h3>
-                <form>
+                <h3 class="card-title text-left mb-3">Create new personal account</h3>
+                <form method="post" action="createNewAccountPersonal">
                   <div class="form-group">
                     <label>First name</label>
-                    <input type="text" class="form-control p_input">
+                    <input type="text" name="first_name" class="form-control p_input">
                   </div>
                   <div class="form-group">
                     <label>Last name</label>
-                    <input type="text" class="form-control p_input">
+                    <input type="text" name="last_name" class="form-control p_input">
                   </div>
                   <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="form-control p_input">
+                    <input type="email" name="email" class="form-control p_input">
                   </div>
                   <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-block enter-btn">Create account</button>

@@ -8,33 +8,28 @@ import com.example.Models.Companyes;
 import com.example.Models.Personne;
 import com.example.Models.Users;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "Customers", value = "/Customers")
-public class Customers extends HttpServlet {
+@WebServlet(name = "deleteAccount", value = "/deleteAccount")
+public class deleteAccount extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
-    }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        int person_id = Integer.parseInt(request.getParameter("person_id"));
         PersonneDAO personnes = new PersonneDAOImlp();
         CompanyDAO companys = new CompanyDAOImpl();
+        PersonneDAO deleteThisOne = new PersonneDAOImlp();
         try {
-            //get the object that contain att users info in a from of array list
-            //this class is a generic class
+
             Users<Personne> personne = personnes.getAll();
             Users<Companyes> companyes = companys.getAll();
-            //pass the infos into he views
+
+            deleteThisOne.delete(person_id);
+            request.setAttribute("msg", "Done");
             request.setAttribute("personnes", personne);
             request.setAttribute("companyes", companyes);
             RequestDispatcher dispatcher = request.getRequestDispatcher("Views/basic-table.jsp");
@@ -43,6 +38,11 @@ public class Customers extends HttpServlet {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }

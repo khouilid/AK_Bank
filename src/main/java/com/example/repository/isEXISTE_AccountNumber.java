@@ -1,31 +1,28 @@
 package com.example.repository;
 
-import com.example.Models.User;
 import com.example.Utiles.Connexion;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Login {
+public class isEXISTE_AccountNumber {
 
-    public int log_in(User users) throws SQLException {
-        int id = 0;
+
+
+    public static boolean isExist(Long account_number) throws SQLException {
         //sql query
-        String sql = "SELECT id FROM users WHERE email= ? AND password= ?;";
+        String sql = "SELECT COUNT(*) AS c FROM users WHERE account_number = ?;";
         //prepare the DB and put the vars
-        //TODO fix connection null
         PreparedStatement stmt = Connexion.connect().prepareStatement(sql);
-        stmt.setString(1, users.getEmail());
-        stmt.setString(2, users.getPassword());
+        stmt.setLong(1, account_number);
         ResultSet rs = stmt.executeQuery();
         // get result and return the id if there is a user the this infos
         if (rs.next()) {
-            id = rs.getInt("id");
+            if (rs.getInt("c") == 0){
+                return false;
+            }
         }
-        return id;
+        return true;
     }
-
-
-
 }

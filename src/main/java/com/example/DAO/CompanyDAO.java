@@ -1,7 +1,7 @@
 package com.example.DAO;
 
-import com.example.JavaBeans.Companyes;
-import com.example.JavaBeans.Users;
+import com.example.Models.Companyes;
+import com.example.Models.Users;
 
 import java.sql.SQLException;
 

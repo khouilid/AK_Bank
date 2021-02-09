@@ -1,14 +1,23 @@
-package com.example.JavaBeans;
+package com.example.Models;
 
 import java.sql.Date;
 
-public class Companyes extends User {
+public class Companyes extends User implements Comparable<Companyes>{
 
 
-    private long id, sold;
+    private Integer id, sold;
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
     private Date created;
 
-    public Companyes(String name, String email, int sold , Date created) {
+    public Companyes(String name, String email, Integer sold , Date created) {
         this.name = name;
         this.sold = sold;
         this.setEmail(email);
@@ -24,7 +33,7 @@ public class Companyes extends User {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -32,7 +41,7 @@ public class Companyes extends User {
         return sold;
     }
 
-    public void setSold(long sold) {
+    public void setSold(Integer sold) {
         this.sold = sold;
     }
 
@@ -75,6 +84,12 @@ public class Companyes extends User {
         this.name = name;
     }
 
-    public Companyes(String firt_name, String last_name, String email, int sold) {
+    public Companyes(String firt_name, String last_name, String email, Integer sold) {
+    }
+
+    @Override
+    public int compareTo(Companyes company) {
+        Integer id1 = Math.toIntExact(this.getSold());
+        return id1.compareTo((int) company.getSold());
     }
 }

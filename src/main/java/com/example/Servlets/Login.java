@@ -1,5 +1,5 @@
 package com.example.Servlets;
-import com.example.JavaBeans.User;
+import com.example.Models.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,11 +24,17 @@ public class Login extends HttpServlet {
         String password = request.getParameter("pwd");
         com.example.repository.Login log = new com.example.repository.Login();
 
+
+        //TODO secure the login form
         try {
             int rs = log.log_in(new User(email, password));
             if (rs != 0) {
                 HttpSession isLog = request.getSession();
                 isLog.setAttribute("isLog", "YES");
+                request.setAttribute("RichesPersonnes", index.getRichesPersonne());
+                request.setAttribute("getRichesCompany", index.getRichesCompany());
+
+
                 RequestDispatcher dispatcher = request.getRequestDispatcher("inde.jsp");
                 dispatcher.forward(request, response);
             }

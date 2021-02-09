@@ -1,5 +1,6 @@
-<%@ page import="com.example.JavaBeans.Personne" %>
+<%@ page import="com.example.Models.Personne" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.example.Models.Companyes" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -32,11 +33,11 @@
     <!-- partial:partials/_sidebar.jsp -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-            <a class="sidebar-brand brand-logo" href="inde.jsp">
+            <a class="sidebar-brand brand-logo" href="/">
                 <h2 class=" text-white">AK Bank</h2>
 
             </a>
-            <a class="sidebar-brand brand-logo-mini" href="inde.jsp">
+            <a class="sidebar-brand brand-logo-mini" href="/">
                 <h2 class=" text-white">AK</h2>
             </a>
         </div>
@@ -114,16 +115,7 @@
             </li>
 
             <li class="nav-item menu-items">
-                <a class="nav-link" href="/CreateAccount">
-              <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
-              </span>
-                    <span class="menu-title">Create new account</span>
-                </a>
-            </li>
-
-            <li class="nav-item menu-items">
-                <a class="nav-link" href="/chartjs">
+                <a class="nav-link" href="/charts">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
@@ -136,13 +128,13 @@
               <span class="menu-icon">
                 <i class="mdi mdi-security"></i>
               </span>
-                    <span class="menu-title">User Pages</span>
+                    <span class="menu-title">New account</span>
                     <i class="menu-arrow"></i>
                 </a>
                 <div class="collapse" id="auth">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="/register"> Register </a></li>
-                        <li class="nav-item"><a class="nav-link" href="/registe"> Register </a></li>
+                        <li class="nav-item"><a class="nav-link" href="/createNewAccountPersonal"> Personal account </a></li>
+                        <li class="nav-item"><a class="nav-link" href="/CreateNewAccountEnterprise"> Enterprise </a></li>
                     </ul>
                 </div>
 
@@ -154,7 +146,7 @@
         <!-- partial:partials/_navbar.jsp -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo-mini" href="inde.jsp">
+                <a class="navbar-brand brand-logo-mini" href="/">
 
 
                     <h2 class=" text-white">AK</h2>
@@ -252,68 +244,45 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th> Client Name</th>
-                                            <th> Account N°:</th>
+                                            <th> Company Name</th>
                                             <th> Sold</th>
-                                            <th> Open in</th>
-                                            <th> Account Type</th>
+                                            <th> Created</th>
+                                            <th> Account N°:</th>
                                             <th> CVC</th>
 
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
 
-                                            <td>
-                                                <img src="./assets/images/faces/face2.jpg" alt="image"/>
-                                                <span class="pl-2">Estella Bryan</span>
-                                            </td>
-                                            <td> 02312</td>
-                                            <td> $14,500</td>
-                                            <td> Website</td>
-                                            <td> Cash on delivered</td>
-                                            <td> 04 Dec 2019</td>
+                                        <%
+                                            ArrayList<Companyes> companyes = (ArrayList<Companyes>) request.getAttribute("getRichesCompany");
+                                            int limite;
+                                            if (companyes.size() < 5){
+                                                limite = companyes.size();
+                                            }else {
+                                                limite = 5;
+                                            }
 
-                                        </tr>
+                                            for (int i = 0; i < limite; i++) {
+
+
+                                        %>
                                         <tr>
 
                                             <td>
                                                 <img src="./assets/images/faces/face5.jpg" alt="image"/>
-                                                <span class="pl-2">Lucy Abbott</span>
+                                                <span class="pl-2"><%=companyes.get(i).getName()%></span>
                                             </td>
-                                            <td> 02312</td>
-                                            <td> $14,500</td>
-                                            <td> App design</td>
-                                            <td> Credit card</td>
-                                            <td> 04 Dec 2019</td>
+                                            <td>$<%=companyes.get(i).getSold() %></td>
+                                            <td><%=companyes.get(i).getCreated().toString() %></td>
+                                            <td> Not set</td>
+                                            <td> Not set</td>
 
                                         </tr>
-                                        <tr>
+                                        <%
+                                            }
+                                        %>
 
-                                            <td>
-                                                <img src="./assets/images/faces/face3.jpg" alt="image"/>
-                                                <span class="pl-2">Peter Gill</span>
-                                            </td>
-                                            <td> 02312</td>
-                                            <td> $14,500</td>
-                                            <td> Development</td>
-                                            <td> Online Payment</td>
-                                            <td> 04 Dec 2019</td>
-
-                                        </tr>
-                                        <tr>
-
-                                            <td>
-                                                <img src="./assets/images/faces/face4.jpg" alt="image"/>
-                                                <span class="pl-2">Sallie Reyes</span>
-                                            </td>
-                                            <td> 02312</td>
-                                            <td> $14,500</td>
-                                            <td> Website</td>
-                                            <td> Credit card</td>
-                                            <td> 04 Dec 2019</td>
-
-                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
