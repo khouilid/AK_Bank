@@ -38,7 +38,7 @@
               <div class="profile-pic">
                 <div class="count-indicator">
                   <%--                  <img class="img-xs rounded-circle " src="./assets/images/faces/face15.jpg" alt="img">--%>
-                  <img class="img-xs rounded-circle " src="./assets/images/faces/face15.jpg" alt="img">
+                  <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="img">
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
@@ -106,7 +106,7 @@
           </li>
 
           <li class="nav-item menu-items">
-            <a class="nav-link" href="/chartjs">
+            <a class="nav-link" href="/charts">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
@@ -142,13 +142,13 @@
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
               <span class="mdi mdi-menu"></span>
             </button>
-            <ul class="navbar-nav w-100">
-              <li class="nav-item w-100">
-                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                  <input type="text" class="form-control" placeholder="Search products">
-                </form>
-              </li>
-            </ul>
+<%--            <ul class="navbar-nav w-100">--%>
+<%--              <li class="nav-item w-100">--%>
+<%--                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">--%>
+<%--                  <input type="text" class="form-control" placeholder="Search products">--%>
+<%--                </form>--%>
+<%--              </li>--%>
+<%--            </ul>--%>
         
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
               <span class="mdi mdi-format-line-spacing"></span>

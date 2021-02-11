@@ -8,6 +8,7 @@ import com.example.Models.Companyes;
 import com.example.Models.Personne;
 import com.example.Models.User;
 import com.example.Models.Users;
+import com.example.repository.Statistics;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -53,6 +54,8 @@ public class Login extends HttpServlet {
             if (rs != 0) {
                 HttpSession isLog = request.getSession();
                 isLog.setAttribute("isLog", "YES");
+                request.setAttribute("personnalAccountsDATA", Statistics.totalPersonnalAccountsMoney("personnes"));
+                request.setAttribute("companyAccountsDATA", Statistics.totalPersonnalAccountsMoney("compeny"));
                 request.setAttribute("RichesPersonnes", getRichesPersonne());
                 request.setAttribute("getRichesCompany", getRichesCompany());
                 RequestDispatcher dispatcher = request.getRequestDispatcher("Views/index.jsp");

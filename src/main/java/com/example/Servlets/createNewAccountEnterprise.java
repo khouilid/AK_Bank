@@ -57,8 +57,7 @@ public class createNewAccountEnterprise extends HttpServlet {
 
         }
         request.setAttribute("msg", msg);
-        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-        dispatcher.forward(request, response);
+        response.sendRedirect(url);
 
     }
 }

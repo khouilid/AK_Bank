@@ -14,6 +14,7 @@ com/example/Utiles/Connexion.class
 com/example/Models/Users.class
 com/example/Servlets/Customers.class
 com/example/DAO/CompanyDAO.class
+com/example/repository/Statistics.class
 com/example/repository/Login.class
 com/example/Tools/RandomInformations.class
 com/example/Servlets/charts.class
