@@ -158,7 +158,7 @@
                 <ul class="navbar-nav w-100">
                     <li class="nav-item w-100">
                         <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                            <input type="text" class="form-control" placeholder="Search products">
+                            <input id="myInput" type="text" class="form-control" placeholder="Search products">
                         </form>
                     </li>
                 </ul>
@@ -196,7 +196,7 @@
                                             <th>Status</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="myTable">
 
 
                                         <%
@@ -218,9 +218,13 @@
                                             </td>
                                             <td>
                                                 <form action="deleteAccount" method="get">
+                                                    <input hidden name="accountOf" value="person" >
+
                                                     <div>
                                                         <input hidden name="person_id"
                                                                value="<%=personnes.get(i).getId()%>">
+                                                        <input hidden name="user_id"
+                                                               value="<%=personnes.get(i).getUser_id()%>">
                                                         <input type="submit" name="Action" class="btn btn-danger"
                                                                value="Delete">
                                                         <%
@@ -233,7 +237,7 @@
                                                             }else{
                                                                 %>
                                                         <input name="Action" type="submit" class="btn btn-secondary"
-                                                               value="deblock">
+                                                               value="Unblock">
                                                         <%
                                                             }
                                                         %>
@@ -265,7 +269,7 @@
                                             <th>Status</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="myTable1">
 
 
                                         <%
@@ -287,6 +291,9 @@
                                             </td>
                                             <td>
                                                 <form action="deleteAccount" method="get">
+                                                    <input hidden name="accountOf" value="enterprise" >
+                                                    <input hidden name="user_id"
+                                                           value="<%=companyes.get(i).getUser_id()%>">
                                                     <div>
                                                         <input hidden name="person_id"
                                                                value="<%=companyes.get(i).getId()%>">
@@ -303,7 +310,7 @@
                                                         }else{
                                                         %>
                                                         <input name="Action" type="submit" class="btn btn-secondary"
-                                                               value="deblock">
+                                                               value="Unblock">
                                                         <%
                                                             }
                                                         %>
@@ -355,5 +362,24 @@
 <!-- endinject -->
 <!-- Custom js for this page -->
 <!-- End custom js for this page -->
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable1 tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+</script>
 </body>
 </html>

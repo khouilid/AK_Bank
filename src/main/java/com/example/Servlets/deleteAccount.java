@@ -4,6 +4,7 @@ import com.example.DAO.CompanyDAO;
 import com.example.DAO.CompanyDAOImpl;
 import com.example.DAO.PersonneDAO;
 import com.example.DAO.PersonneDAOImlp;
+import com.example.repository.Block_Unblock;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,31 +22,39 @@ public class deleteAccount extends HttpServlet {
 
         int person_id = Integer.parseInt(request.getParameter("person_id"));
         String action = request.getParameter("Action");
-        String accountOf = request.getParameter("accountOf");
-        if (action.equals("delete")) {
-            if (accountOf.equals("perssone")) {
+        String accounType = request.getParameter("accountOf");
 
-                PersonneDAO personnes = new PersonneDAOImlp();
-                try {
-                    personnes.delete(person_id);
-                    redictAfterDelete(request, response);
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            } else {
+        if (action.equals("Delete")) {
 
-                CompanyDAO company = new CompanyDAOImpl();
-                try {
-                    company.delete(person_id);
-                    redictAfterDelete(request, response);
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
+            block(accounType, person_id);
+
+        }
+
+        int user_id = Integer.parseInt(request.getParameter("user_id"));
+        if(action.equals("Block")){
+            try {
+                Block_Unblock blockAccount = new Block_Unblock();
+                blockAccount.blockAccount(user_id);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+        }else {
+            try {
+                Block_Unblock blockAccount = new Block_Unblock();
+                blockAccount.unblockAccount(user_id);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
             }
         }
-        else{
 
+
+        try {
+            redictAfterDelete(request, response);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
+
     }
 
     @Override
@@ -64,5 +73,25 @@ public class deleteAccount extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("Views/basic-table.jsp");
         dispatcher.forward(request, response);
 
+    }
+
+    private void block(String accounType, int id){
+        if (accounType.equals("person")) {
+
+            PersonneDAO personnes = new PersonneDAOImlp();
+            try {
+                personnes.delete(id);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        } else {
+
+            CompanyDAO company = new CompanyDAOImpl();
+            try {
+                company.delete(id);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
     }
 }

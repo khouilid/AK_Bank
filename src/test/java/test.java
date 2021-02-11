@@ -6,6 +6,7 @@ import com.example.Models.Personne;
 import com.example.Models.Users;
 import com.example.Servlets.Login;
 import com.example.Tools.RandomInformations;
+import com.example.repository.Block_Unblock;
 
 import java.security.SecureRandom;
 import java.sql.SQLException;
@@ -65,10 +66,14 @@ public class test {
 //        System.out.println(users.getById(2).getFirt_name());
 
 
-        Long[] v = RandomInformations.RandomAccountNumber();
+//        Long[] v = RandomInformations.RandomAccountNumber();
+//
+//        System.out.println(v[0]);
+//        System.out.println(v[1]);
+//        Block_Unblock blockAccount = new Block_Unblock();
+//
+//        blockAccount.blockAccount(75);
 
-        System.out.println(v[0]);
-        System.out.println(v[1]);
 
 //
 //        CompanyDAO companyDAO = new CompanyDAOImpl();

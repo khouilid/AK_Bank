@@ -37,7 +37,7 @@ public class PersonneDAOImlp implements PersonneDAO {
     public Users<Personne> getAll() throws SQLException {
         Users<Personne> users = new Users<>();
         //sql query
-        String sql = "SELECT p.id, p.firt_name,u.created, p.last_name,u.email,p.sold , u.account_number, u.status " +
+        String sql = "SELECT p.id,u.id AS user_id, p.firt_name,u.created, p.last_name,u.email,p.sold , u.account_number, u.status " +
                 "FROM personnes p " +
                 "LEFT JOIN users u " +
                 "ON p.user_id = u.id;";
@@ -53,6 +53,7 @@ public class PersonneDAOImlp implements PersonneDAO {
             personne.setId(rs.getInt("id"));
             personne.setStatus(rs.getBoolean("status"));
             personne.setCreated(rs.getDate("created").toString());
+            personne.setUser_id(rs.getInt("user_id"));
             users.setUsers(personne);
         }
         return users;
