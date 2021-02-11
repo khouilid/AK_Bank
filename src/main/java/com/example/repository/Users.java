@@ -24,13 +24,17 @@ public class Users {
 
     public static void createNewUser(String email) throws SQLException {
         //sql query
-        String sql = "INSERT INTO users(email, created, password , account_number) VALUES (?,?,?, ?);";
+        String sql = "INSERT INTO users(email, created, password , account_number, cvc) VALUES (?,?,?, ?,?);";
         //prepare the DB and put the vars
         PreparedStatement stmt = Connexion.connect().prepareStatement(sql);
         stmt.setString(1, email);
         stmt.setDate(2, new java.sql.Date(System.currentTimeMillis()));
         stmt.setString(3, RandomInformations.RandomPassword(16));
-        stmt.setLong(4, RandomInformations.RandomAccountNumber()[0]);
+
+        //genrate unique Account number and cvc
+        Long[] genarator = RandomInformations.RandomAccountNumber();
+        stmt.setLong(4, genarator[0]);
+        stmt.setLong(5, genarator[1]);
 
         stmt.executeUpdate();
     }

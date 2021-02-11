@@ -23,11 +23,11 @@
       <!-- partial:../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href="inde.jsp">
+          <a class="sidebar-brand brand-logo" href="Views/index.jsp">
          <h2 class=" text-white">AK Bank</h2>
           
           </a>
-          <a class="sidebar-brand brand-logo-mini" href="inde.jsp">
+          <a class="sidebar-brand brand-logo-mini" href="Views/index.jsp">
             
             
             <h2 class=" text-white">AK</h2>
@@ -89,7 +89,7 @@
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="inde.jsp">
+            <a class="nav-link" href="Views/index.jsp">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -155,7 +155,7 @@
         <!-- partial:../partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="inde.jsp"><img src="../assets/images/logo-mini.svg" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="Views/index.jsp"><img src="../assets/images/logo-mini.svg" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">

@@ -12,21 +12,21 @@
     <title>Corona Admin</title>
     <!-- plugins:css -->
     <%--    <link rel="stylesheet" href="../assets/vendors/mdi/css/materialdesignicons.min.css">--%>
-    <link rel="stylesheet" href="./assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="./assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="./assets/vendors/jvectormap/jquery-jvectormap.css">
-    <link rel="stylesheet" href="./assets/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="./assets/vendors/owl-carousel-2/owl.carousel.min.css">
-    <link rel="stylesheet" href="./assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="./assets/images/favicon.png"/>
+    <link rel="shortcut icon" href="assets/images/favicon.png"/>
 </head>
 <body>
 <div class="container-scroller">
@@ -47,7 +47,7 @@
                     <div class="profile-pic">
                         <div class="count-indicator">
                             <%--                  <img class="img-xs rounded-circle " src="./assets/images/faces/face15.jpg" alt="img">--%>
-                            <img class="img-xs rounded-circle " src="./assets/images/faces/face15.jpg" alt="img">
+                            <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="img">
                             <span class="count bg-success"></span>
                         </div>
                         <div class="profile-name">
@@ -256,12 +256,7 @@
 
                                         <%
                                             ArrayList<Companyes> companyes = (ArrayList<Companyes>) request.getAttribute("getRichesCompany");
-                                            int limite;
-                                            if (companyes.size() < 5){
-                                                limite = companyes.size();
-                                            }else {
-                                                limite = 5;
-                                            }
+                                            int limite =  companyes.size() < 5 ?  companyes.size(): 5;
 
                                             for (int i = 0; i < limite; i++) {
 
@@ -270,12 +265,12 @@
                                         <tr>
 
                                             <td>
-                                                <img src="./assets/images/faces/face5.jpg" alt="image"/>
+                                                <img src="assets/images/faces/face5.jpg" alt="image"/>
                                                 <span class="pl-2"><%=companyes.get(i).getName()%></span>
                                             </td>
                                             <td>$<%=companyes.get(i).getSold() %></td>
                                             <td><%=companyes.get(i).getCreated().toString() %></td>
-                                            <td> Not set</td>
+                                            <td><%=companyes.get(i).getAccount_number() %></td>
                                             <td> Not set</td>
 
                                         </tr>
@@ -311,29 +306,24 @@
                                         <tbody>
                                         <%
                                             ArrayList<Personne> personnes = (ArrayList<Personne>) request.getAttribute("RichesPersonnes");
-                                            int limit;
-                                            if (personnes.size() < 5){
-                                                limit = personnes.size();
-                                            }else {
-                                                limit = 5;
-                                            }
+
+                                            int limit =  personnes.size() < 5 ?  personnes.size(): 5;
 
                                             for (int i = 0; i < limit; i++) {
 
 
+
                                         %>
                                         <tr>
-
                                             <td>
-                                                <img src="./assets/images/faces/face5.jpg" alt="image"/>
+                                                <img src="assets/images/faces/face5.jpg" alt="image"/>
                                                 <span class="pl-2"><%=personnes.get(i).getFirt_name()%></span>
                                             </td>
                                             <td><%=personnes.get(i).getLast_name() %></td>
                                             <td>$<%=personnes.get(i).getSold() %></td>
                                             <td><%=personnes.get(i).getCreated()%></td>
+                                            <td><%=personnes.get(i).getAccount_number()%></td>
                                             <td> App design</td>
-                                            <td> App design</td>
-
                                         </tr>
                                         <%
                                             }
@@ -434,24 +424,24 @@
 </div>
 <!-- container-scroller -->
 <!-- plugins:js -->
-<script src="./assets/vendors/js/vendor.bundle.base.js"></script>
+<script src="assets/vendors/js/vendor.bundle.base.js"></script>
 <!-- endinject -->
 <!-- Plugin js for this page -->
-<script src="./assets/vendors/chart.js/Chart.min.js"></script>
-<script src="./assets/vendors/progressbar.js/progressbar.min.js"></script>
-<script src="./assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
-<script src="./assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="./assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+<script src="assets/vendors/chart.js/Chart.min.js"></script>
+<script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
+<script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+<script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
 <!-- End plugin js for this page -->
 <!-- inject:js -->
-<script src="./assets/js/off-canvas.js"></script>
-<script src="./assets/js/hoverable-collapse.js"></script>
-<script src="./assets/js/misc.js"></script>
-<script src="./assets/js/settings.js"></script>
-<script src="./assets/js/todolist.js"></script>
+<script src="assets/js/off-canvas.js"></script>
+<script src="assets/js/hoverable-collapse.js"></script>
+<script src="assets/js/misc.js"></script>
+<script src="assets/js/settings.js"></script>
+<script src="assets/js/todolist.js"></script>
 <!-- endinject -->
 <!-- Custom js for this page -->
-<script src="./assets/js/dashboard.js"></script>
+<script src="assets/js/dashboard.js"></script>
 <!-- End custom js for this page -->
 </body>
 </html>

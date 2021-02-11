@@ -37,11 +37,12 @@ public class NewPersonalAccount extends HttpServlet {
             //TODO diplay alerts in all cases
             try {
                 //if user creates we redirect adin into dashboard
-
                 if (newPerson.create(new Personne(email, first_name, last))) {
-                    url = "inde.jsp";
-                    request.setAttribute("RichesPersonnes", index.getRichesPersonne());
-                    request.setAttribute("getRichesCompany", index.getRichesCompany());
+                    url = "/home";
+                    request.setAttribute("RichesPersonnes", Login.getRichesPersonne());
+                    request.setAttribute("getRichesCompany", Login.getRichesCompany());
+                    System.out.println("is here !");
+
                 }
                 //Otherwise, we return them to register from
                 else {
@@ -53,15 +54,12 @@ public class NewPersonalAccount extends HttpServlet {
             }
         }
         //Otherwise, we return them to register from
-
         else {
             msg = "infos_error";
             url = "Views/register.jsp";
 
         }
-        request.setAttribute("msg", msg);
-        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-        dispatcher.forward(request, response);
+        response.sendRedirect(url);
 
     }
 }

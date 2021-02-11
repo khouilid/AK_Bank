@@ -6,14 +6,12 @@ com/example/DAO/CompanyDAOImpl.class
 com/example/repository/Users.class
 com/example/Servlets/deleteAccount.class
 com/example/Models/User.class
-com/example/Servlets/index.class
 com/example/Servlets/createNewAccountEnterprise.class
 com/example/DAO/PersonneDAO.class
 com/example/Servlets/Login.class
 com/example/Utiles/Connexion.class
 com/example/Models/Users.class
 com/example/Servlets/Customers.class
-com/example/Servlets/CreateAccount.class
 com/example/DAO/CompanyDAO.class
 com/example/repository/Login.class
 com/example/Tools/RandomInformations.class

@@ -1,7 +1,10 @@
 import com.example.DAO.CompanyDAO;
 import com.example.DAO.CompanyDAOImpl;
+import com.example.DAO.PersonneDAOImlp;
 import com.example.Models.Companyes;
+import com.example.Models.Personne;
 import com.example.Models.Users;
+import com.example.Servlets.Login;
 import com.example.Tools.RandomInformations;
 
 import java.security.SecureRandom;
@@ -12,9 +15,9 @@ public class test {
 
     public static void main(String[] args) throws SQLException {
 
-
-        System.out.println(RandomInformations.RandomAccountNumber()[0]);
-        System.out.println(RandomInformations.RandomAccountNumber()[1]);
+//
+//        System.out.println(RandomInformations.RandomAccountNumber()[0]);
+//        System.out.println(RandomInformations.RandomAccountNumber()[1]);
         //inti ths id by 0
 //        String id = "";
 //        //sql query
@@ -43,12 +46,14 @@ public class test {
 //        } catch (SQLException throwables) {
 //            throwables.printStackTrace();
 //        }
+
+
 //
 //
-//        ArrayList<Personne> personnes = getRichesPersonne();
-//        personnes.forEach(p -> System.out.println(p.getCreated().toString()));
-//
-//
+//        ArrayList<Personne> personnes = Login.getRichesPersonne();
+//        personnes.forEach(p -> System.out.println(p.getFirt_name()));
+
+
 //         Personne personne = new  Personne("String email" , "String firt_name", "String last_name");
 //
 //         PersonneDAO users = new PersonneDAOImlp();
@@ -60,7 +65,10 @@ public class test {
 //        System.out.println(users.getById(2).getFirt_name());
 
 
-//        System.out.println(RandomInformations.RandomPassword(10));
+        Long[] v = RandomInformations.RandomAccountNumber();
+
+        System.out.println(v[0]);
+        System.out.println(v[1]);
 
 //
 //        CompanyDAO companyDAO = new CompanyDAOImpl();

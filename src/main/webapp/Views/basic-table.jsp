@@ -3,6 +3,7 @@
 <%@ page import="com.example.Models.Users" %>
 <%@ page import="java.util.HashSet" %>
 <%@ page import="com.example.Models.Companyes" %>
+<%@ page import="com.example.Models.User" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +25,10 @@
     <link rel="shortcut icon" href="./assets/images/favicon.png"/>
 </head>
 <body>
+<%--<%--%>
+<%--    Users[] data = (Users[]) request.getAttribute("personnes");--%>
+
+<%--%>--%>
 <div class="container-scroller">
     <!-- partial:../partials/_sidebar.jsp -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -143,8 +148,8 @@
         <!-- partial:../partials/_navbar.jsp -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo-mini" href="inde.jsp"><img src="./assets/images/logo-mini.svg"
-                                                                             alt="logo"/></a>
+                <a class="navbar-brand brand-logo-mini" href="Views/index.jsp"><img src="./assets/images/logo-mini.svg"
+                                                                                    alt="logo"/></a>
             </div>
             <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -207,20 +212,33 @@
                                         <tr>
                                             <td><%=personnes.get(i).getFirt_name()%>
                                             </td>
-                                            <td><%=personnes.get(i).getFirt_name()%>
+                                            <td><%=personnes.get(i).getLast_name()%>
                                             </td>
                                             <td><%=personnes.get(i).getCreated()%>
                                             </td>
                                             <td>
+                                                <form action="deleteAccount" method="get">
                                                     <div>
-                                                <form class="d-flex justify-content-between" action="deleteAccount" method="get">
-                                                        <input hidden name="person_id" value="<%=personnes.get(i).getId()%>">
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                                </form>
-                                                        <button class="btn btn-secondary">Block</button>
-                                                        <button style="display: none;" class="btn badge-success">Inblock
-                                                        </button>
+                                                        <input hidden name="person_id"
+                                                               value="<%=personnes.get(i).getId()%>">
+                                                        <input type="submit" name="Action" class="btn btn-danger"
+                                                               value="Delete">
+                                                        <%
+                                                            if (!personnes.get(i).getStatus()) {
+                                                        %>
+                                                        <input name="Action" type="submit" class="btn btn-secondary"
+                                                               value="Block">
+
+                                                        <%
+                                                            }else{
+                                                                %>
+                                                        <input name="Action" type="submit" class="btn btn-secondary"
+                                                               value="deblock">
+                                                        <%
+                                                            }
+                                                        %>
                                                     </div>
+                                                </form>
                                             </td>
                                         </tr>
 
@@ -268,12 +286,29 @@
                                             <td><%=companyes.get(i).getCreated()%>
                                             </td>
                                             <td>
-                                                <div>
-                                                    <button class="btn btn-danger">Delete</button>
-                                                    <button class="btn btn-secondary">Block</button>
-                                                    <button style="display: none;" class="btn badge-success">Inblock
-                                                    </button>
-                                                </div>
+                                                <form action="deleteAccount" method="get">
+                                                    <div>
+                                                        <input hidden name="person_id"
+                                                               value="<%=companyes.get(i).getId()%>">
+                                                        <input type="submit" name="Action" class="btn btn-danger"
+                                                               value="Delete">
+                                                        <%
+                                                            //check if this account is blocked or not
+                                                            if (!companyes.get(i).getStatus()) {
+                                                        %>
+                                                        <input name="Action" type="submit" class="btn btn-secondary"
+                                                               value="Block">
+
+                                                        <%
+                                                        }else{
+                                                        %>
+                                                        <input name="Action" type="submit" class="btn btn-secondary"
+                                                               value="deblock">
+                                                        <%
+                                                            }
+                                                        %>
+                                                    </div>
+                                                </form>
                                             </td>
                                         </tr>
 

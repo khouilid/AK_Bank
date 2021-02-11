@@ -7,6 +7,17 @@ public class User implements Serializable {
     private String email;
     private String password;
     private Long account_number;
+    private boolean status;
+
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
 
 
     public Long getAccount_number() {

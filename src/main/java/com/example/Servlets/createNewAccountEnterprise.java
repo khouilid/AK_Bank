@@ -35,9 +35,9 @@ public class createNewAccountEnterprise extends HttpServlet {
             try {
                 //if user creates we redirect adin into dashboard
                 if (company.create(new Companyes(name, email))) {
-                    url = "inde.jsp";
-                    request.setAttribute("RichesPersonnes", index.getRichesPersonne());
-                    request.setAttribute("getRichesCompany", index.getRichesCompany());
+                    url = "/home";
+                    request.setAttribute("RichesPersonnes", Login.getRichesPersonne());
+                    request.setAttribute("getRichesCompany", Login.getRichesCompany());
                 }
                 //Otherwise, we return them to register from
 
