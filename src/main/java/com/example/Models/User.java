@@ -8,6 +8,16 @@ public class User implements Serializable {
     private String password;
     private Long account_number;
     private boolean status;
+    private int cvc;
+
+    public int getCvc() {
+        return cvc;
+    }
+
+    public void setCvc(int cvc) {
+        this.cvc = cvc;
+    }
+
 
 
     public boolean getStatus() {

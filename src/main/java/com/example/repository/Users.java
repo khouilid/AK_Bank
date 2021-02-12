@@ -1,6 +1,7 @@
 package com.example.repository;
 
 import com.example.Tools.RandomInformations;
+import com.example.Tools.emailSender;
 import com.example.Utiles.Connexion;
 
 import java.sql.PreparedStatement;
@@ -29,14 +30,18 @@ public class Users {
         PreparedStatement stmt = Connexion.connect().prepareStatement(sql);
         stmt.setString(1, email);
         stmt.setDate(2, new java.sql.Date(System.currentTimeMillis()));
-        stmt.setString(3, RandomInformations.RandomPassword(16));
+        String pwd = RandomInformations.RandomPassword(16);
+        stmt.setString(3, pwd);
 
         //genrate unique Account number and cvc
         Long[] genarator = RandomInformations.RandomAccountNumber();
         stmt.setLong(4, genarator[0]);
         stmt.setLong(5, genarator[1]);
+        //TODO fix
+//        emailSender.sendMyMail( email ,  genarator[0],  genarator[1], pwd) ;
 
-        stmt.executeUpdate();
+
+            stmt.executeUpdate();
     }
 
 }

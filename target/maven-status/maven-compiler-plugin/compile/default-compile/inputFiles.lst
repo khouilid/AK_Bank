@@ -5,6 +5,7 @@
 /home/roy/Java/AK_BANK/src/main/java/com/example/repository/Statistics.java
 /home/roy/Java/AK_BANK/src/main/java/com/example/DAO/CompanyDAOImpl.java
 /home/roy/Java/AK_BANK/src/main/java/com/example/repository/isEXISTE_AccountNumber.java
+/home/roy/Java/AK_BANK/src/main/java/com/example/Tools/emailSender.java
 /home/roy/Java/AK_BANK/src/main/java/com/example/DAO/CompanyDAO.java
 /home/roy/Java/AK_BANK/src/main/java/com/example/Servlets/NewPersonalAccount.java
 /home/roy/Java/AK_BANK/src/main/java/com/example/Models/Personne.java

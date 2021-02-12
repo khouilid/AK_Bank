@@ -35,8 +35,7 @@ public class Login extends HttpServlet {
             String log = (String) isLog.getAttribute("isLog");
             if (log.equals("YES")) {
                url = "Views/index.jsp";
-                request.setAttribute("RichesPersonnes", getRichesPersonne());
-                request.setAttribute("getRichesCompany", getRichesCompany());
+                statistic(request);
             }
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
@@ -54,10 +53,7 @@ public class Login extends HttpServlet {
             if (rs != 0) {
                 HttpSession isLog = request.getSession();
                 isLog.setAttribute("isLog", "YES");
-                request.setAttribute("personnalAccountsDATA", Statistics.totalPersonnalAccountsMoney("personnes"));
-                request.setAttribute("companyAccountsDATA", Statistics.totalPersonnalAccountsMoney("compeny"));
-                request.setAttribute("RichesPersonnes", getRichesPersonne());
-                request.setAttribute("getRichesCompany", getRichesCompany());
+                statistic(request);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("Views/index.jsp");
                 dispatcher.forward(request, response);
             }
@@ -98,5 +94,15 @@ public class Login extends HttpServlet {
             throwables.printStackTrace();
         }
         return personnes;
+    }
+
+
+
+    //get some statistic plus the riches account for both types
+    private void statistic(HttpServletRequest request){
+        request.setAttribute("personnalAccountsDATA", Statistics.totalPersonnalAccountsMoney("personnes"));
+        request.setAttribute("companyAccountsDATA", Statistics.totalPersonnalAccountsMoney("compeny"));
+        request.setAttribute("RichesPersonnes", getRichesPersonne());
+        request.setAttribute("getRichesCompany", getRichesCompany());
     }
 }

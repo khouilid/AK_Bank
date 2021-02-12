@@ -18,4 +18,5 @@ com/example/repository/Statistics.class
 com/example/repository/Login.class
 com/example/Tools/RandomInformations.class
 com/example/Servlets/charts.class
+com/example/Tools/emailSender.class
 com/example/DAO/PersonneDAOImlp.class

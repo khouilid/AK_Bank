@@ -2,6 +2,7 @@ package com.example.DAO;
 
 import com.example.Models.Personne;
 import com.example.Models.Users;
+import com.example.Tools.emailSender;
 import com.example.Utiles.Connexion;
 
 import java.sql.PreparedStatement;
@@ -24,7 +25,9 @@ public class PersonneDAOImlp implements PersonneDAO {
             stmt.setInt(3, com.example.repository.Users.getUserID(user.getEmail()));
             //intialize user sold with $0
             stmt.setInt(4, 0);
-            stmt.executeUpdate();
+            //send the info into the users
+
+                stmt.executeUpdate();
             return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -37,7 +40,7 @@ public class PersonneDAOImlp implements PersonneDAO {
     public Users<Personne> getAll() throws SQLException {
         Users<Personne> users = new Users<>();
         //sql query
-        String sql = "SELECT p.id,u.id AS user_id, p.firt_name,u.created, p.last_name,u.email,p.sold , u.account_number, u.status " +
+        String sql = "SELECT p.id,u.id AS user_id, p.firt_name,u.created, p.last_name,u.email,p.sold , u.account_number, u.status , u.cvc " +
                 "FROM personnes p " +
                 "LEFT JOIN users u " +
                 "ON p.user_id = u.id;";
@@ -54,6 +57,7 @@ public class PersonneDAOImlp implements PersonneDAO {
             personne.setStatus(rs.getBoolean("status"));
             personne.setCreated(rs.getDate("created").toString());
             personne.setUser_id(rs.getInt("user_id"));
+            personne.setCvc(rs.getInt("cvc"));
             users.setUsers(personne);
         }
         return users;

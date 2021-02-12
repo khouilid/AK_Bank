@@ -35,7 +35,7 @@ public class CompanyDAOImpl implements CompanyDAO {
     public Users<Companyes> getAll() throws SQLException {
         Users<Companyes> companyes = new Users<>();
         //sql query
-        String sql = "SELECT p.id,u.id AS user_id, p.name,u.created,u.email,p.sold, u.account_number, u.status FROM compeny p LEFT JOIN users u ON p.user_id = u.id;";
+        String sql = "SELECT p.id,u.id AS user_id, p.name,u.created,u.email,p.sold, u.account_number, u.status, u.cvc FROM compeny p LEFT JOIN users u ON p.user_id = u.id;";
         //prepare the DB and put the vars
         PreparedStatement stmt = Connexion.connect().prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
@@ -49,6 +49,7 @@ public class CompanyDAOImpl implements CompanyDAO {
             companye.setStatus(rs.getBoolean("status"));
             companye.setId(rs.getInt("id"));
             companye.setUser_id(rs.getInt("user_id"));
+            companye.setCvc(rs.getInt("cvc"));
             companyes.setUsers(companye);
         }
         return companyes;
