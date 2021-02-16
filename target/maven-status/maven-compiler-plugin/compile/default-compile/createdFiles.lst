@@ -1,4 +1,5 @@
 com/example/repository/isEXISTE_AccountNumber.class
+com/example/Tools/RandomGenerateur.class
 com/example/Models/Personne.class
 com/example/Models/Companyes.class
 com/example/Servlets/NewPersonalAccount.class
@@ -16,7 +17,6 @@ com/example/Servlets/Customers.class
 com/example/DAO/CompanyDAO.class
 com/example/repository/Statistics.class
 com/example/repository/Login.class
-com/example/Tools/RandomInformations.class
 com/example/Servlets/charts.class
 com/example/Tools/emailSender.class
 com/example/DAO/PersonneDAOImlp.class

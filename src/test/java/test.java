@@ -1,3 +1,5 @@
+import com.example.repository.Users;
+
 import java.sql.SQLException;
 
 public class test {
@@ -79,6 +81,9 @@ public class test {
 //        System.out.println(Long.parseLong(RandomInformations.RandomAccountNumber()));
 //        System.out.println(RandomInformations.RandomAccountNumber().length());
 //        companyDAO.getAll()
+
+
+        Users.createNewUser("ROY@ROY.ma");
 
     }
 

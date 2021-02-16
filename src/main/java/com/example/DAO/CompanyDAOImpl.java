@@ -14,12 +14,11 @@ public class CompanyDAOImpl implements CompanyDAO {
     public boolean create(Companyes companye) throws SQLException {
 
         try {
-            com.example.repository.Users.createNewUser(companye.getEmail());
             String sql2 = "INSERT INTO compeny(name, user_id , sold) VALUES(?,?,?)";
             PreparedStatement stmt = Connexion.connect().prepareStatement(sql2);
             stmt.setString(1, companye.getName());
             //getUserID is method the reuen this new user id from the DB
-            stmt.setInt(2, com.example.repository.Users.getUserID(companye.getEmail()));
+            stmt.setInt(2, com.example.repository.Users.createNewUser(companye.getEmail()));
             //initialize user sold with $0
             stmt.setInt(3, 0);
             stmt.executeUpdate();

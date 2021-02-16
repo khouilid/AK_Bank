@@ -9,12 +9,6 @@
     <!-- plugins:css -->
     <link rel="stylesheet" href="./assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="./assets/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End Plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="./assets/images/favicon.png" />
@@ -22,7 +16,7 @@
   <body>
     <div class="container-scroller">
       <!-- partial:../partials/_sidebar.jsp -->
-      <%@ include file = "Views/Lyouts/sidebar.jsp" %>
+      <%@ include file = "Lyouts/sidebar.jsp" %>
 
       <div class="container-fluid page-body-wrapper">
         <!-- partial:../partials/_navbar.jsp -->

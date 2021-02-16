@@ -31,7 +31,7 @@
 <%--%>--%>
 <div class="container-scroller">
     <!-- partial:../partials/_sidebar.jsp -->
-    <%@ include file = "Views/Lyouts/sidebar.jsp" %>
+    <%@ include file = "Lyouts/sidebar.jsp" %>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
         <!-- partial:../partials/_navbar.jsp -->

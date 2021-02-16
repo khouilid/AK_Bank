@@ -15,18 +15,16 @@ public class PersonneDAOImlp implements PersonneDAO {
 
         try {
             //Create new user in users table
-            com.example.repository.Users.createNewUser(user.getEmail());
 
             String sql2 = "INSERT INTO personnes(firt_name, last_name, user_id , sold) VALUES(?,?,?,?)";
             PreparedStatement stmt = Connexion.connect().prepareStatement(sql2);
             stmt.setString(1, user.getFirt_name());
             stmt.setString(2, user.getLast_name());
             //getUserID is method the reuen this new user id from the DB
-            stmt.setInt(3, com.example.repository.Users.getUserID(user.getEmail()));
+            stmt.setInt(3, com.example.repository.Users.createNewUser(user.getEmail()));
             //intialize user sold with $0
             stmt.setInt(4, 0);
             //send the info into the users
-
                 stmt.executeUpdate();
             return true;
         } catch (SQLException throwables) {
