@@ -1,16 +1,4 @@
-import com.example.DAO.CompanyDAO;
-import com.example.DAO.CompanyDAOImpl;
-import com.example.DAO.PersonneDAOImlp;
-import com.example.Models.Companyes;
-import com.example.Models.Personne;
-import com.example.Models.Users;
-import com.example.Servlets.Login;
-import com.example.Tools.RandomInformations;
-import com.example.repository.Block_Unblock;
-
-import java.security.SecureRandom;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class test {
 

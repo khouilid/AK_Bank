@@ -18,13 +18,13 @@
                 <div class="card col-lg-4 mx-auto">
                     <div class="card-body px-5 py-5">
                         <h3 class="card-title text-left mb-3">Login</h3>
-                        <form action="${pageContext.request.contextPath}/home" method="post">
+                        <form action="/" method="post">
                             <div class="form-group">
-                                <label>Username or email *</label>
+                                <label>Email</label>
                                 <input type="text" name="email" class="form-control p_input">
                             </div>
                             <div class="form-group">
-                                <label>Password *</label>
+                                <label>Password</label>
                                 <input name="pwd" type="password" class="form-control p_input">
                             </div>
                             <%--                  <div class="form-group d-flex align-items-center justify-content-between">--%>

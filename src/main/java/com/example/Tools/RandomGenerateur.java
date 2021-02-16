@@ -5,7 +5,7 @@ import com.example.repository.isEXISTE_AccountNumber;
 import java.security.SecureRandom;
 import java.sql.SQLException;
 
-public class RandomInformations {
+public class RandomGenerateur {
 
     
     public static String RandomPassword(int len) {
@@ -45,7 +45,7 @@ public class RandomInformations {
         //check if this number is existe in the DB
         //if it is exist we Recurse this method
         if (isEXISTE_AccountNumber.isExist(num)){
-            return RandomInformations.RandomAccountNumber();
+            return RandomGenerateur.RandomAccountNumber();
         }
         return new Long[]{num,Long.parseLong(cvc.toString()) };
     }
