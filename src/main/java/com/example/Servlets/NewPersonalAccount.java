@@ -29,24 +29,19 @@ public class NewPersonalAccount extends HttpServlet {
         String first_name = request.getParameter("first_name");
         String last = request.getParameter("last_name");
         String email = request.getParameter("email");
-        String msg = "Done", url = "";
-
+        String msg = "", url = "";
         //check if all infos is put in the inputs
         if (!first_name.equals("") && !last.equals("") && !email.equals("")) {
             PersonneDAO newPerson = new PersonneDAOImlp();
-            //TODO diplay alerts in all cases
             try {
                 //if user creates we redirect adin into dashboard
                 if (newPerson.create(new Personne(email, first_name, last))) {
-                    url = "/home";
-                    request.setAttribute("RichesPersonnes", Login.getRichesPersonne());
-                    request.setAttribute("getRichesCompany", Login.getRichesCompany());
-                    System.out.println("is here !");
-
+                    msg = "Account has been created successfully!";
+                    url = "Views/basic-table.jsp";
                 }
                 //Otherwise, we return them to register from
                 else {
-                    msg = "sql_error";
+                    msg = "Please try again";
                     url = "Views/register.jsp";
                 }
             } catch (SQLException throwables) {
@@ -55,11 +50,14 @@ public class NewPersonalAccount extends HttpServlet {
         }
         //Otherwise, we return them to register from
         else {
-            msg = "infos_error";
+            msg = "WarningOne";
             url = "Views/register.jsp";
-
         }
-        response.sendRedirect(url);
 
+        try {
+            deleteAccount.redictAfterDelete(request, response, msg);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }

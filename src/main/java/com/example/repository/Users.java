@@ -19,7 +19,6 @@ public class Users {
         stmt.setDate(2, new java.sql.Date(System.currentTimeMillis()));
         String pwd = RandomGenerateur.RandomPassword(16);
         stmt.setString(3, pwd);
-
         //genrate unique Account number and cvc
         Long[] genarator = RandomGenerateur.RandomAccountNumber();
         stmt.setLong(4, genarator[0]);
@@ -27,11 +26,11 @@ public class Users {
         //TODO fix
         // emailSender.sendMyMail( email ,  genarator[0],  genarator[1], pwd) ;
         stmt.executeUpdate();
+        //get the user id from the DB 
          ResultSet rs =  stmt.getGeneratedKeys();
          if (rs.next()){
              return rs.getInt(1);
          }
         return 0;
     }
-
 }

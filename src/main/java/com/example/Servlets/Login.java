@@ -83,6 +83,8 @@ public class Login extends HttpServlet {
     }
 
     public static ArrayList<Companyes> getRichesCompany() {
+
+
         ArrayList<Companyes> personnes = null;
         CompanyDAO companyes = new CompanyDAOImpl();
         try {

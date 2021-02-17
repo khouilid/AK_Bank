@@ -29,14 +29,14 @@
 
 <%
 
-   long[] personnalAccountsDATA = (long[]) request.getAttribute("personnalAccountsDATA");
-   long[] companyAccountsDATA = (long[]) request.getAttribute("companyAccountsDATA");
+    long[] personnalAccountsDATA = (long[]) request.getAttribute("personnalAccountsDATA");
+    long[] companyAccountsDATA = (long[]) request.getAttribute("companyAccountsDATA");
 
 
 %>
 <div class="container-scroller">
     <!-- partial:partials/_sidebar.jsp -->
-    <%@ include file = "Lyouts/sidebar.jsp" %>
+    <%@ include file="Lyouts/sidebar.jsp" %>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_navbar.jsp -->
@@ -57,8 +57,23 @@
             </div>
         </nav>
         <!-- partial -->
+
         <div class="main-panel">
             <div class="content-wrapper">
+                <%--display alerte--%>
+
+                <%
+                    if (request.getAttribute("msg") != null) {
+                        String msg = (String) request.getAttribute("msg");
+                %>
+                <div>
+                    <div class="alert alert-success" role="alert">
+                        <%=msg%>
+                    </div>
+                </div>
+                <%
+                    }
+                %>
 
                 <div class="row">
                     <div class="col-sm-4 grid-margin">
@@ -68,10 +83,12 @@
                                 <div class="row">
                                     <div class="col-8 col-sm-12 col-xl-8 my-auto">
                                         <div class="d-flex d-sm-block d-md-flex align-items-center">
-                                            <h2 class="mb-0">$<%=personnalAccountsDATA[0] + companyAccountsDATA[0]%></h2>
+                                            <h2 class="mb-0">$<%=personnalAccountsDATA[0] + companyAccountsDATA[0]%>
+                                            </h2>
                                             <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
                                         </div>
-                                        <h6 class="text-muted font-weight-normal"><%=String.format("%,.2f", ( (double) personnalAccountsDATA[0] / (double) ( companyAccountsDATA[0] + personnalAccountsDATA[0]) ) * 100) %>% comes from personnal accounts</h6>
+                                        <h6 class="text-muted font-weight-normal"><%=String.format("%,.2f", ((double) personnalAccountsDATA[0] / (double) (companyAccountsDATA[0] + personnalAccountsDATA[0])) * 100) %>
+                                            % comes from personnal accounts</h6>
                                     </div>
                                     <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
                                         <i class="icon-lg mdi mdi-codepen text-primary ml-auto"></i>
@@ -80,6 +97,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-sm-4 grid-margin">
                         <div class="card">
                             <div class="card-body">
@@ -87,7 +105,8 @@
                                 <div class="row">
                                     <div class="col-8 col-sm-12 col-xl-8 my-auto">
                                         <div class="d-flex d-sm-block d-md-flex align-items-center">
-                                            <h2 class="mb-0"><%=companyAccountsDATA[1] %></h2>
+                                            <h2 class="mb-0"><%=companyAccountsDATA[1] %>
+                                            </h2>
                                             <p class="text-success ml-2 mb-0 font-weight-medium">+8.3%</p>
                                         </div>
                                         <h6 class="text-muted font-weight-normal"> 9.61% Since last month</h6>
@@ -106,7 +125,8 @@
                                 <div class="row">
                                     <div class="col-8 col-sm-12 col-xl-8 my-auto">
                                         <div class="d-flex d-sm-block d-md-flex align-items-center">
-                                            <h2 class="mb-0"><%=personnalAccountsDATA[1]%></h2>
+                                            <h2 class="mb-0"><%=personnalAccountsDATA[1]%>
+                                            </h2>
                                             <p class="text-danger ml-2 mb-0 font-weight-medium">-2.1% </p>
                                         </div>
                                         <h6 class="text-muted font-weight-normal">2.27% Since last month</h6>
@@ -119,6 +139,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="row ">
                     <div class="col-12 grid-margin">
                         <div class="card">
@@ -140,7 +162,7 @@
 
                                         <%
                                             ArrayList<Companyes> companyes = (ArrayList<Companyes>) request.getAttribute("getRichesCompany");
-                                            int limite =  companyes.size() < 5 ?  companyes.size(): 5;
+                                            int limite = companyes.size() < 5 ? companyes.size() : 5;
 
                                             for (int i = 0; i < limite; i++) {
 
@@ -152,10 +174,14 @@
                                                 <img src=".././assets/images/faces/face5.jpg" alt="image"/>
                                                 <span class="pl-2"><%=companyes.get(i).getName()%></span>
                                             </td>
-                                            <td>$<%=companyes.get(i).getSold() %></td>
-                                            <td><%=companyes.get(i).getCreated().toString() %></td>
-                                            <td><%=companyes.get(i).getAccount_number() %></td>
-                                            <td><%=companyes.get(i).getCvc() %></td>
+                                            <td>$<%=companyes.get(i).getSold() %>
+                                            </td>
+                                            <td><%=companyes.get(i).getCreated().toString() %>
+                                            </td>
+                                            <td><%=companyes.get(i).getAccount_number() %>
+                                            </td>
+                                            <td><%=companyes.get(i).getCvc() %>
+                                            </td>
 
                                         </tr>
                                         <%
@@ -190,10 +216,9 @@
                                         <%
                                             ArrayList<Personne> personnes = (ArrayList<Personne>) request.getAttribute("RichesPersonnes");
 
-                                            int limit =  personnes.size() < 5 ?  personnes.size(): 5;
+                                            int limit = personnes.size() < 5 ? personnes.size() : 5;
 
                                             for (int i = 0; i < limit; i++) {
-
 
 
                                         %>
@@ -202,11 +227,16 @@
                                                 <img src="/assets/images/faces/face5.jpg" alt="image"/>
                                                 <span class="pl-2"><%=personnes.get(i).getFirt_name()%></span>
                                             </td>
-                                            <td><%=personnes.get(i).getLast_name() %></td>
-                                            <td>$<%=personnes.get(i).getSold() %></td>
-                                            <td><%=personnes.get(i).getCreated()%></td>
-                                            <td><%=personnes.get(i).getAccount_number()%></td>
-                                            <td><%=personnes.get(i).getCvc()%></td>
+                                            <td><%=personnes.get(i).getLast_name() %>
+                                            </td>
+                                            <td>$<%=personnes.get(i).getSold() %>
+                                            </td>
+                                            <td><%=personnes.get(i).getCreated()%>
+                                            </td>
+                                            <td><%=personnes.get(i).getAccount_number()%>
+                                            </td>
+                                            <td><%=personnes.get(i).getCvc()%>
+                                            </td>
                                         </tr>
                                         <%
                                             }
@@ -294,9 +324,8 @@
             <!-- partial:partials/_footer.jsp -->
             <footer class="footer">
                 <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-                            href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©2020</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Made by<a href="#" target="_blank"> KHOUILID</a> </span>
                 </div>
             </footer>
             <!-- partial -->
