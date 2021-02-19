@@ -34,7 +34,7 @@ public class Login extends HttpServlet {
         if (isLog.getAttribute("isLog") != null) {
             String log = (String) isLog.getAttribute("isLog");
             if (log.equals("YES")) {
-               url = "Views/index.jsp";
+               url = "WEB-INF/Views/index.jsp";
                 statistic(request);
             }
         }
@@ -54,13 +54,13 @@ public class Login extends HttpServlet {
                 HttpSession isLog = request.getSession();
                 isLog.setAttribute("isLog", "YES");
                 statistic(request);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("Views/index.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/Views/index.jsp");
                 dispatcher.forward(request, response);
             }
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            RequestDispatcher dispatcher = request.getRequestDispatcher("Views/error-500.jsp");
-            dispatcher.forward(request, response);
+            System.out.println(throwables.getMessage());
+            response.sendRedirect("WEB-INF/Views/error-500.jsp");
+
         }
     }
 

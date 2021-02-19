@@ -38,7 +38,7 @@ public class NewPersonalAccount extends HttpServlet {
             try {
                 //if user creates we redirect adin into dashboard
                 if (newPerson.create(new Personne(email, first_name, last))) {
-                    url = "/home";
+                    url = "/";
                     request.setAttribute("RichesPersonnes", Login.getRichesPersonne());
                     request.setAttribute("getRichesCompany", Login.getRichesCompany());
                     System.out.println("is here !");
@@ -47,7 +47,7 @@ public class NewPersonalAccount extends HttpServlet {
                 //Otherwise, we return them to register from
                 else {
                     msg = "sql_error";
-                    url = "Views/register.jsp";
+                    url = "WEB-INF/Views/register.jsp";
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -56,7 +56,7 @@ public class NewPersonalAccount extends HttpServlet {
         //Otherwise, we return them to register from
         else {
             msg = "infos_error";
-            url = "Views/register.jsp";
+            url = "WEB-INF/Views/register.jsp";
 
         }
         response.sendRedirect(url);

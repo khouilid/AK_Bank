@@ -18,7 +18,7 @@ public class createNewAccountEnterprise extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //rederct to add new Enterprise account
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Views/register1.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/Views/register1.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -35,7 +35,7 @@ public class createNewAccountEnterprise extends HttpServlet {
             try {
                 //if user creates we redirect adin into dashboard
                 if (company.create(new Companyes(name, email))) {
-                    url = "/home";
+                    url = "/";
                     request.setAttribute("RichesPersonnes", Login.getRichesPersonne());
                     request.setAttribute("getRichesCompany", Login.getRichesCompany());
                 }
@@ -43,7 +43,7 @@ public class createNewAccountEnterprise extends HttpServlet {
 
                 else {
                     msg = "sql_error";
-                    url = "Views/register.jsp";
+                    url = "WEB-INF/Views/register.jsp";
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -53,7 +53,7 @@ public class createNewAccountEnterprise extends HttpServlet {
 
         else {
             msg = "infos_error";
-            url = "Views/register.jsp";
+            url = "WEB-INF/Views/register.jsp";
 
         }
         request.setAttribute("msg", msg);

@@ -70,7 +70,7 @@ public class deleteAccount extends HttpServlet {
         request.setAttribute("msg", "Done");
         request.setAttribute("personnes", personnes.getAll());
         request.setAttribute("companyes", companys.getAll());
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Views/basic-table.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/Views/basic-table.jsp");
         dispatcher.forward(request, response);
 
     }

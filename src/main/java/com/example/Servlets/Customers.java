@@ -35,7 +35,7 @@ public class Customers extends HttpServlet {
             //pass the infos into he views
             request.setAttribute("personnes", personnes.getAll());
             request.setAttribute("companyes", companys.getAll());
-            RequestDispatcher dispatcher = request.getRequestDispatcher("Views/basic-table.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/Views/basic-table.jsp");
             dispatcher.forward(request, response);
 
         } catch (SQLException throwables) {

@@ -14,7 +14,7 @@ public class charts extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Views/chartjs.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/Views/chartjs.jsp");
         dispatcher.forward(request, response);
     }
 
