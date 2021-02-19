@@ -1,7 +1,9 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.example.Models.Personne" %>
 <%@ page import="com.example.Models.Users" %>
+<%@ page import="java.util.HashSet" %>
 <%@ page import="com.example.Models.Companyes" %>
+<%@ page import="com.example.Models.User" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,16 +14,24 @@
     <!-- plugins:css -->
     <link rel="stylesheet" href="./assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="./assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="./assets/images/favicon.png"/>
 </head>
 <body>
+<%--<%--%>
+<%--    Users[] data = (Users[]) request.getAttribute("personnes");--%>
 
+<%--%>--%>
 <div class="container-scroller">
-
     <!-- partial:../partials/_sidebar.jsp -->
-    <%@ include file="Lyouts/sidebar.jsp" %>
+    <%@ include file = "Lyouts/sidebar.jsp" %>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
         <!-- partial:../partials/_navbar.jsp -->
@@ -52,20 +62,14 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title">Customers</h3>
+                    <h3 class="page-title"> Basic Tables </h3>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Basic tables</li>
+                        </ol>
+                    </nav>
                 </div>
-                <%
-                    if (request.getAttribute("msg") != null) {
-                        String msg = (String) request.getAttribute("msg");
-                %>
-                <div>
-                    <div class="alert alert-info" role="alert">
-                        <%=msg%>
-                    </div>
-                </div>
-                <%
-                    }
-                %>
                 <div class="row">
                     <div class="col-lg-6 grid-margin stretch-card">
                         <div class="card">
@@ -103,7 +107,7 @@
                                             </td>
                                             <td>
                                                 <form action="deleteAccount" method="get">
-                                                    <input hidden name="accountOf" value="person">
+                                                    <input hidden name="accountOf" value="person" >
 
                                                     <div>
                                                         <input hidden name="person_id"
@@ -119,8 +123,8 @@
                                                                value="Block">
 
                                                         <%
-                                                        } else {
-                                                        %>
+                                                            }else{
+                                                                %>
                                                         <input name="Action" type="submit" class="btn btn-secondary"
                                                                value="Unblock">
                                                         <%
@@ -176,7 +180,7 @@
                                             </td>
                                             <td>
                                                 <form action="deleteAccount" method="get">
-                                                    <input hidden name="accountOf" value="enterprise">
+                                                    <input hidden name="accountOf" value="enterprise" >
                                                     <input hidden name="user_id"
                                                            value="<%=companyes.get(i).getUser_id()%>">
                                                     <div>
@@ -192,7 +196,7 @@
                                                                value="Block">
 
                                                         <%
-                                                        } else {
+                                                        }else{
                                                         %>
                                                         <input name="Action" type="submit" class="btn btn-secondary"
                                                                value="Unblock">
@@ -221,8 +225,9 @@
             <!-- partial:../partials/_footer.jsp -->
             <footer class="footer">
                 <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©2020</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Made by<a href="#" target="_blank"> KHOUILID</a> </span>
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
+                            href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
                 </div>
             </footer>
             <!-- partial -->
@@ -234,11 +239,18 @@
 <!-- container-scroller -->
 <!-- plugins:js -->
 <script src="./assets/vendors/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- Plugin js for this page -->
+<!-- End plugin js for this page -->
+<!-- inject:js -->
 <script src="./assets/js/off-canvas.js"></script>
 <script src="./assets/js/hoverable-collapse.js"></script>
 <script src="./assets/js/misc.js"></script>
 <script src="./assets/js/settings.js"></script>
 <script src="./assets/js/todolist.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page -->
+<!-- End custom js for this page -->
 <script>
     $(document).ready(function () {
         $("#myInput").on("keyup", function () {
