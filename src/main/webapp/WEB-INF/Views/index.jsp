@@ -2,6 +2,9 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.example.Models.Companyes" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -141,13 +144,9 @@
                                         <%
                                             ArrayList<Companyes> companyes = (ArrayList<Companyes>) request.getAttribute("getRichesCompany");
                                             int limite =  companyes.size() < 5 ?  companyes.size(): 5;
-
                                             for (int i = 0; i < limite; i++) {
-
-
                                         %>
                                         <tr>
-
                                             <td>
                                                 <img src="../../assets/images/faces/face5.jpg" alt="image"/>
                                                 <span class="pl-2"><%=companyes.get(i).getName()%></span>

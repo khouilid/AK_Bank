@@ -33,8 +33,8 @@ public class Customers extends HttpServlet {
             //get the object that contain att users info in a from of array list
             //this class is a generic class
             //pass the infos into he views
-            request.setAttribute("personnes", personnes.getAll());
-            request.setAttribute("companyes", companys.getAll());
+            request.setAttribute("personnes", personnes.getAll().getUsers());
+            request.setAttribute("companyes", companys.getAll().getUsers());
             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/Views/basic-table.jsp");
             dispatcher.forward(request, response);
 

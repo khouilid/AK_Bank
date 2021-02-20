@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.example.Models.Personne" %>
 <%@ page import="com.example.Models.Users" %>
@@ -70,7 +72,7 @@
                         </ol>
                     </nav>
                 </div>
-                <c:if test='${msg != null}' >
+                <c:if test="${msg != null}" >
                     <div>
                         <div class="alert alert-success" role="alert">
                             <c:out value="${msg}" ></c:out>
@@ -95,57 +97,36 @@
                                         </thead>
                                         <tbody id="myTable">
 
+                                        <c:forEach items="${personnes}" var="personne">
+                                            <tr>
+                                                <td><c:out value="${personne.getFirt_name()}"></c:out></td>
+                                                <td><c:out value="${personne.getLast_name()}"></c:out></td>
+                                                <td><c:out value="${personne.getCreated()}"></c:out></td>
 
-                                        <%
+                                                <td>
+                                                    <form action="deleteAccount" method="get">
+                                                        <input type="hidden"  name="accountOf" value="person" >
 
-                                            Users<Personne> users = (Users<Personne>) request.getAttribute("personnes");
-                                            ArrayList<Personne> personnes = users.getUsers();
-
-
-                                            for (int i = 0; i < personnes.size(); i++) {
-
-
-                                        %>
-                                        <tr>
-                                            <td><%=personnes.get(i).getFirt_name()%>
-                                            </td>
-                                            <td><%=personnes.get(i).getLast_name()%>
-                                            </td>
-                                            <td><%=personnes.get(i).getCreated()%>
-                                            </td>
-                                            <td>
-                                                <form action="deleteAccount" method="get">
-                                                    <input hidden name="accountOf" value="person" >
-
-                                                    <div>
-                                                        <input hidden name="person_id"
-                                                               value="<%=personnes.get(i).getId()%>">
-                                                        <input hidden name="user_id"
-                                                               value="<%=personnes.get(i).getUser_id()%>">
-                                                        <input type="submit" name="Action" class="btn btn-danger"
-                                                               value="Delete">
-                                                        <%
-                                                            if (!personnes.get(i).getStatus()) {
-                                                        %>
-                                                        <input name="Action" type="submit" class="btn btn-secondary"
-                                                               value="Block">
-
-                                                        <%
-                                                            }else{
-                                                                %>
-                                                        <input name="Action" type="submit" class="btn btn-secondary"
-                                                               value="Unblock">
-                                                        <%
-                                                            }
-                                                        %>
-                                                    </div>
-                                                </form>
-                                            </td>
-                                        </tr>
-
-                                        <%
-                                            }
-                                        %>
+                                                        <div>
+                                                            <input  type="hidden" name="person_id"
+                                                                   value="${personne.getId()}">
+                                                            <input type="hidden" name="user_id"
+                                                                   value="${personne.getUser_id()}">
+                                                            <input type="submit" name="Action" class="btn btn-danger"
+                                                                   value="Delete">
+                                                            <c:if test="${!personne.getStatus()}">
+                                                                <input name="Action" type="submit" class="btn btn-secondary"
+                                                                       value="Block">
+                                                            </c:if>
+                                                            <c:if test="${personne.getStatus()}">
+                                                                <input name="Action" type="submit" class="btn btn-secondary"
+                                                                       value="Unblock">
+                                                            </c:if>
+                                                        </div>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
@@ -167,58 +148,38 @@
                                         </tr>
                                         </thead>
                                         <tbody id="myTable1">
-
-
-                                        <%
-
-                                            Users<Companyes> companyesUsers = (Users<Companyes>) request.getAttribute("companyes");
-                                            ArrayList<Companyes> companyes = companyesUsers.getUsers();
-
-
-                                            for (int i = 0; i < companyes.size(); i++) {
-
-
-                                        %>
                                         <tr>
-                                            <td><%=companyes.get(i).getName()%>
-                                            </td>
-                                            <td>$<%=companyes.get(i).getSold()%>
-                                            </td>
-                                            <td><%=companyes.get(i).getCreated()%>
-                                            </td>
+                                        <c:forEach items="${companyes}" var="companye">
+
+                                            <td><c:out value="${companye.getName()}"></c:out></td>
+                                            <td><c:out value="${companye.getSold()}"></c:out></td>
+                                            <td><c:out value="${companye.getCreated()}"></c:out></td>
+
                                             <td>
                                                 <form action="deleteAccount" method="get">
-                                                    <input hidden name="accountOf" value="enterprise" >
-                                                    <input hidden name="user_id"
-                                                           value="<%=companyes.get(i).getUser_id()%>">
+                                                    <input type="hidden"  name="accountOf" value="enterprise" >
+
                                                     <div>
-                                                        <input hidden name="person_id"
-                                                               value="<%=companyes.get(i).getId()%>">
+                                                        <input  type="hidden" name="person_id"
+                                                                value="${companye.getId()}">
+                                                        <input type="hidden" name="user_id"
+                                                               value="${companye.getUser_id()}">
                                                         <input type="submit" name="Action" class="btn btn-danger"
                                                                value="Delete">
-                                                        <%
-                                                            //check if this account is blocked or not
-                                                            if (!companyes.get(i).getStatus()) {
-                                                        %>
-                                                        <input name="Action" type="submit" class="btn btn-secondary"
-                                                               value="Block">
-
-                                                        <%
-                                                        }else{
-                                                        %>
-                                                        <input name="Action" type="submit" class="btn btn-secondary"
-                                                               value="Unblock">
-                                                        <%
-                                                            }
-                                                        %>
+                                                        <c:if test="${!companye.getStatus()}">
+                                                            <input name="Action" type="submit" class="btn btn-secondary"
+                                                                   value="Block">
+                                                        </c:if>
+                                                        <c:if test="${companye.getStatus()}">
+                                                            <input name="Action" type="submit" class="btn btn-secondary"
+                                                                   value="Unblock">
+                                                        </c:if>
                                                     </div>
                                                 </form>
                                             </td>
-                                        </tr>
 
-                                        <%
-                                            }
-                                        %>
+                                        </tr>
+                                        </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>

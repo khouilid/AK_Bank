@@ -68,8 +68,8 @@ public class deleteAccount extends HttpServlet {
         PersonneDAO personnes = new PersonneDAOImlp();
         CompanyDAO companys = new CompanyDAOImpl();
         request.setAttribute("msg", "Done");
-        request.setAttribute("personnes", personnes.getAll());
-        request.setAttribute("companyes", companys.getAll());
+        request.setAttribute("personnes", personnes.getAll().getUsers());
+        request.setAttribute("companyes", companys.getAll().getUsers());
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/Views/basic-table.jsp");
         dispatcher.forward(request, response);
 

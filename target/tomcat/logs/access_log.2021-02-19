@@ -1,6 +1,0 @@
-0:0:0:0:0:0:0:1 - - [19/Feb/2021:16:20:02 +0100] "GET / HTTP/1.1" 200 2287 http-bio-8081-exec-1 431
-0:0:0:0:0:0:0:1 - - [19/Feb/2021:16:20:02 +0100] "GET /assets/js/misc.js HTTP/1.1" 404 989 http-bio-8081-exec-3 3
-0:0:0:0:0:0:0:1 - - [19/Feb/2021:16:20:03 +0100] "GET /assets/js/misc.js HTTP/1.1" 404 989 http-bio-8081-exec-4 2
-0:0:0:0:0:0:0:1 - - [19/Feb/2021:16:20:03 +0100] "GET /assets/css/assets/images/auth/Login_bg.jpg HTTP/1.1" 404 1029 http-bio-8081-exec-5 1
-0:0:0:0:0:0:0:1 - - [19/Feb/2021:16:20:03 +0100] "GET /assets/css/assets/fonts/Rubik/Rubik-Regular.ttf HTTP/1.1" 404 1029 http-bio-8081-exec-2 2
-0:0:0:0:0:0:0:1 - - [19/Feb/2021:16:20:03 +0100] "GET /assets/css/assets/fonts/Rubik/Rubik-Medium.ttf HTTP/1.1" 404 1029 http-bio-8081-exec-6 3
